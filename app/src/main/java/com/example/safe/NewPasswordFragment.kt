@@ -65,17 +65,24 @@ class NewPasswordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Toast.makeText(activity, "ADDED$param4 $param1 $param2 $param3", Toast.LENGTH_SHORT).show()
-        if(param1!=null && param2!=null && param3!=null && param4 != null) {
+
+        if(param4 != 0) {
             tes2te.id = param4 as Int
             tes2te.website = param1 as String
             tes2te.password = param2 as String
             tes2te.description = param3 as String
+            textView3.setText("Update Password")
+            button.setText("Update Password")
 
             editTextWeb.setText(param1)
             editTextPass.setText(param2)
             editTextDesc.setText(param3)
 
+        }
+        else
+        {
+            textView3.setText("Add New Password")
+            button.setText("Add new Password")
         }
 
 
@@ -100,7 +107,7 @@ class NewPasswordFragment : Fragment() {
                 }
 
                 pViewModel.storePassword(sWebsite,sPassword,sDesc)
-                Toast.makeText(activity, "ADDED$param4", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "ADDED Password for $sWebsite ", Toast.LENGTH_SHORT).show()
 
                 listener?.goToPasswordListFragment()
             }
@@ -128,6 +135,7 @@ class NewPasswordFragment : Fragment() {
 
 
                 pViewModel.update(tes2te)
+                Toast.makeText(activity, "UPDATED Password for $param1 ", Toast.LENGTH_SHORT).show()
 
                 listener?.goToPasswordListFragment()
             }
@@ -143,9 +151,8 @@ class NewPasswordFragment : Fragment() {
             setTitle("Are you sure?")
             setMessage("You cannot undo this operation")
             setPositiveButton("Yes") { _, _ ->
-                Toast.makeText(activity, "Cant delete $tes2te", Toast.LENGTH_SHORT).show()
                 pViewModel.DeletePassword(tes2te)
-                Toast.makeText(activity, "DELETED$tes2te", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "DELETED Password", Toast.LENGTH_SHORT).show()
                 listener?.goToPasswordListFragment()
             }
             setNegativeButton("No") { _, _ ->
@@ -157,7 +164,7 @@ class NewPasswordFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
 
-            R.id.delete -> if (param4 != 0) deletePassword() else Toast.makeText(activity, "Cant delete $tes2te", Toast.LENGTH_SHORT).show()
+            R.id.delete -> if (param4 != 0) deletePassword() else Toast.makeText(activity, "Cant delete, Try delete an existing password", Toast.LENGTH_SHORT).show()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -167,11 +174,6 @@ class NewPasswordFragment : Fragment() {
         inflater.inflate(R.menu.menu, menu)
     }
 
-    fun updatePassword(position : Int) {
-
-
-        Toast.makeText(activity, "$position", Toast.LENGTH_SHORT).show()
-    }
 
     interface OnFragmentInteractionListener {
         fun goToPasswordListFragment()
@@ -186,7 +188,7 @@ class NewPasswordFragment : Fragment() {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
                     putString(ARG_PARAM3, param3)
-                    putInt(ARG_PARAM4, param4!!)
+                    putInt(ARG_PARAM4, param4)
                 }
             }
     }
