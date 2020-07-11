@@ -28,4 +28,11 @@
         android:text="Descrição"
         android:textSize="22sp" />
 
+    <TextView
+        android:id="@+id/pDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date Created"
+        android:textSize="22sp" />
+
 </LinearLayout>

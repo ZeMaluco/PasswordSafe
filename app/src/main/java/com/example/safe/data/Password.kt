@@ -5,16 +5,20 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Password (
+data class Password(
 
     @PrimaryKey(autoGenerate = true) var id: Int? = null,
 
-    @ColumnInfo(name="website")
+    @ColumnInfo(name = "website")
     var website: String = "",
 
     @ColumnInfo(name = "password")
     var password: String = "",
 
-    @ColumnInfo(name="description")
-    var description: String = ""
+    @ColumnInfo(name = "description")
+    var description: String = "",
+
+    @ColumnInfo(name = "date")
+    var date: String  = ""
+
 )

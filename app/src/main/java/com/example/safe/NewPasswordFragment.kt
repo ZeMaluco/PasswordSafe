@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import com.example.safe.data.Password
 import kotlinx.android.synthetic.main.fragment_new_password.*
-import kotlinx.android.synthetic.main.recycler_item.*
 
 private const val ARG_PARAM4 = "id"
 private const val ARG_PARAM1 = "website"
@@ -158,12 +157,11 @@ class NewPasswordFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
 
-            R.id.delete -> if (tes2te != null) deletePassword() else Toast.makeText(activity, "Cant delete $tes2te", Toast.LENGTH_SHORT).show()
+            R.id.delete -> if (param4 != 0) deletePassword() else Toast.makeText(activity, "Cant delete $tes2te", Toast.LENGTH_SHORT).show()
         }
         return super.onOptionsItemSelected(item)
     }
-
-
+    
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu, menu)

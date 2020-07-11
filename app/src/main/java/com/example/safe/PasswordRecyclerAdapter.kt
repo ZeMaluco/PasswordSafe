@@ -7,6 +7,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.safe.data.Password
+import java.text.SimpleDateFormat
+import java.util.*
 import com.example.safe.PasswordRecyclerAdapter.PasswordViewHolder as PasswordViewHolder1
 
 class PasswordRecyclerAdapter(private val myDataset: List<Password>) :
@@ -23,9 +25,11 @@ class PasswordRecyclerAdapter(private val myDataset: List<Password>) :
     }
 
     override fun onBindViewHolder(holder: PasswordViewHolder1, position: Int) {
+
         holder.pweb.text = myDataset[position].website
         holder.password.text = myDataset[position].password
         holder.pDesc.text = myDataset[position].description
+        holder.pDate.text = myDataset[position].date
 
         var currentWeb = myDataset[position].website
         var currentPass = myDataset[position].password
@@ -51,6 +55,7 @@ class PasswordRecyclerAdapter(private val myDataset: List<Password>) :
         var pweb: TextView = itemView.findViewById(R.id.pweb)
         var password: TextView = itemView.findViewById(R.id.password)
         var pDesc: TextView = itemView.findViewById(R.id.pDesc)
+        var pDate:TextView=itemView.findViewById(R.id.pDate)
     }
 
 
