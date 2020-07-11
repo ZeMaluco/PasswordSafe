@@ -5,7 +5,11 @@ import android.os.Bundle
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity(), NewPasswordFragment.OnFragmentInteractionListener,
-    PasswordListFragment.OnFragmentInteractionListener {
+    PasswordListFragment.OnFragmentInteractionListener{
+    private var web= ""
+    private var pass= ""
+    private var desc= ""
+    private var id = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,9 +26,10 @@ class MainActivity : AppCompatActivity(), NewPasswordFragment.OnFragmentInteract
     override fun goToNewPasswordFragment() {
         val manager = supportFragmentManager
         val transaction = manager.beginTransaction()
-        transaction.replace(R.id.flContent, NewPasswordFragment.newInstance())
+        transaction.replace(R.id.flContent, NewPasswordFragment.newInstance(id,web,pass,desc))
         transaction.commit()
     }
+
 
     override fun goToPasswordListFragment() {
         val manager = supportFragmentManager

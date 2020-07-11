@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.safe.data.Password
 import com.example.safe.PasswordRecyclerAdapter.PasswordViewHolder as PasswordViewHolder1
@@ -25,6 +26,25 @@ class PasswordRecyclerAdapter(private val myDataset: List<Password>) :
         holder.pweb.text = myDataset[position].website
         holder.password.text = myDataset[position].password
         holder.pDesc.text = myDataset[position].description
+
+        var currentWeb = myDataset[position].website
+        var currentPass = myDataset[position].password
+        var currentDesc = myDataset[position].description
+        var id = myDataset[position].id
+
+
+
+        holder.itemView.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+
+                val activity = v!!.context as AppCompatActivity
+                val newPasswordFragment = NewPasswordFragment.newInstance(id!!,currentWeb,currentPass,currentDesc)
+                activity.supportFragmentManager.beginTransaction()
+                    .replace(R.id.flContent, newPasswordFragment).addToBackStack(null).commit()
+
+
+            }
+        })
     }
 
     class PasswordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -32,6 +52,7 @@ class PasswordRecyclerAdapter(private val myDataset: List<Password>) :
         var password: TextView = itemView.findViewById(R.id.password)
         var pDesc: TextView = itemView.findViewById(R.id.pDesc)
     }
+
 
 
 }

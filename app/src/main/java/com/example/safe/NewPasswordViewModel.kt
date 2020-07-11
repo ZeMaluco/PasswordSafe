@@ -15,6 +15,7 @@ class NewPasswordViewModel(application: Application) : AndroidViewModel(applicat
     private val mDb: PasswordDatabase? = PasswordDatabase.getInstance(application)
 
     private val allPasswords = MutableLiveData<List<Password>>()
+    private val currentPassword = MutableLiveData<List<Password>>()
 
     fun storePassword(website: String, password1:String, description:String) {
 
@@ -37,6 +38,27 @@ class NewPasswordViewModel(application: Application) : AndroidViewModel(applicat
         }
 
         return allPasswords
+    }
+
+    fun DeletePassword(item: Password){
+        GlobalScope.launch {
+            mDb?.passwordDao()?.delete(item)
+        }
+
+
+    }
+    fun getPassword(id: Int): LiveData<List<Password>> {
+        GlobalScope.launch {
+            val list = mDb?.passwordDao()?.getPassword(id)
+            currentPassword.postValue(list)
+        }
+        return currentPassword
+    }
+
+    fun update(item: Password ){
+        GlobalScope.launch {
+            mDb?.passwordDao()?.update(item)
+        }
     }
 
 }

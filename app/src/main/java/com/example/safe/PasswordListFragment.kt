@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.safe.data.Password
 import com.example.safe.data.PasswordDatabase
 import kotlinx.android.synthetic.main.fragment_password_list.*
+import kotlinx.android.synthetic.main.recycler_item.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -64,6 +65,12 @@ class PasswordListFragment : Fragment() {
             listener?.goToNewPasswordFragment()
         }
 
+
+
+
+
+
+
         rvList.layoutManager = LinearLayoutManager(activity)
 
     }
@@ -77,6 +84,7 @@ class PasswordListFragment : Fragment() {
         }
     }
 
+
     override fun onDetach() {
         super.onDetach()
         listener = null
@@ -85,7 +93,9 @@ class PasswordListFragment : Fragment() {
 
     interface OnFragmentInteractionListener {
         fun goToNewPasswordFragment()
+
     }
+
 
     companion object {
 
