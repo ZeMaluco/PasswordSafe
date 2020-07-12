@@ -40,8 +40,6 @@ class NewPasswordFragment : Fragment() {
         // Re-created activities receive the same MyViewModel instance created by the first activity.
 
         pViewModel = ViewModelProviders.of(this).get(NewPasswordViewModel::class.java)
-
-
     }
 
     override fun onCreateView(
@@ -52,7 +50,6 @@ class NewPasswordFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_new_password, container, false)
     }
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -77,15 +74,12 @@ class NewPasswordFragment : Fragment() {
             editTextWeb.setText(param1)
             editTextPass.setText(param2)
             editTextDesc.setText(param3)
-
         }
         else
         {
             textView3.setText("Add New Password")
             button.setText("Add new Password")
         }
-
-
         button.setOnClickListener {
             Toast.makeText(activity, "$param4", Toast.LENGTH_SHORT).show()
             if(param4 === 0) {
@@ -105,7 +99,6 @@ class NewPasswordFragment : Fragment() {
                     Toast.makeText(activity, "Description required", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
-
                 pViewModel.storePassword(sWebsite,sPassword,sDesc)
                 Toast.makeText(activity, "ADDED Password for $sWebsite ", Toast.LENGTH_SHORT).show()
 

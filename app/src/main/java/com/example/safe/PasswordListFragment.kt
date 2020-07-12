@@ -20,9 +20,7 @@ import timber.log.Timber
 import java.text.FieldPosition
 
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class PasswordListFragment : Fragment() {
 
     private var listener: OnFragmentInteractionListener? = null
@@ -64,13 +62,6 @@ class PasswordListFragment : Fragment() {
 
             listener?.goToNewPasswordFragment()
         }
-
-
-
-
-
-
-
         rvList.layoutManager = LinearLayoutManager(activity)
 
     }
@@ -93,12 +84,9 @@ class PasswordListFragment : Fragment() {
 
     interface OnFragmentInteractionListener {
         fun goToNewPasswordFragment()
-
     }
 
-
     companion object {
-
         @JvmStatic
         fun newInstance() = PasswordListFragment()
     }

@@ -45,8 +45,6 @@ class PasswordRecyclerAdapter(private val myDataset: List<Password>) :
                 val newPasswordFragment = NewPasswordFragment.newInstance(id!!,currentWeb,currentPass,currentDesc)
                 activity.supportFragmentManager.beginTransaction()
                     .replace(R.id.flContent, newPasswordFragment).addToBackStack(null).commit()
-
-
             }
         })
     }
